@@ -20,7 +20,12 @@ public class SnippetsServiceImplementation implements SnippetsService {
 
 
     @Override
-    public List<Snippet> getAllSnippets(String category) {
+    public List<Snippet> getAllSnippets() {
+        return snippetRepository.findAll();
+    }
+
+    @Override
+    public List<Snippet> getSnippets(String category) {
         return snippetRepository.findByCategory(category);
     }
 

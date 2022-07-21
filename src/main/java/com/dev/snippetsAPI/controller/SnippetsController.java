@@ -19,9 +19,13 @@ public class SnippetsController {
     private SnippetsServiceImplementation snippetService;
 
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Snippet>> getAllSnippets(){
+        return new ResponseEntity<List<Snippet>>(snippetService.getAllSnippets(),HttpStatus.OK);
+    }
     @GetMapping("/categories/{category}")
-    public ResponseEntity<List<Snippet>> getAllSnippets(@PathVariable String category){
-        return new ResponseEntity<List<Snippet>>(snippetService.getAllSnippets(category),HttpStatus.OK);
+    public ResponseEntity<List<Snippet>> getSnippets(@PathVariable String category){
+        return new ResponseEntity<List<Snippet>>(snippetService.getSnippets(category),HttpStatus.OK);
     }
     @GetMapping("/categories/filter/{name}")
     public ResponseEntity<Optional<Snippet>> getOneSnippet(@PathVariable String name){
